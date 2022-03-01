@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">AndroidImageScanApp</string>
-    <string name="take_a_photo">点击拍摄照片</string>
     <string name="login_account"> izumiskai@aliyun.com</string>
     <string name="login_password"> 123456</string>
 </resources>

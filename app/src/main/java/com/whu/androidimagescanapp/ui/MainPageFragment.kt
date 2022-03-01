@@ -12,7 +12,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
@@ -27,7 +26,7 @@ class MainPageFragment : Fragment(), View.OnClickListener {
     private val REQUEST_STORAGE_PERMISSION = 1
     private val TAKE_A_PHOTO = 2
 
-    private var takeImage: TextView? = null
+    private var takeImage: ImageView? = null
     private var imageContent: ImageView? = null
     private var imageUri: Uri? = null
 
@@ -51,7 +50,7 @@ class MainPageFragment : Fragment(), View.OnClickListener {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_main_page, container, false).let {
-            takeImage = it.findViewById(R.id.take_a_photo)
+            takeImage = it.findViewById(R.id.bottom_icon_take_a_photo)
             imageContent = it.findViewById(R.id.photo_content)
             it
         }
@@ -60,7 +59,7 @@ class MainPageFragment : Fragment(), View.OnClickListener {
     override fun onClick(view: View?) {
         val clickedView = view ?: return
         when (clickedView.id) {
-            R.id.take_a_photo -> {
+            R.id.bottom_icon_take_a_photo -> {
                 if (PermissionUtil.checkPermission(
                         requireContext(),
                         Manifest.permission.WRITE_EXTERNAL_STORAGE
