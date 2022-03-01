@@ -34,6 +34,14 @@ android {
 
 dependencies {
 
+    implementation "com.bytedance.tools.codelocator:codelocator-core:1.0.0"
+    debugImplementation "com.bytedance.tools.codelocator:codelocator-lancet-xml:1.0.0"
+    debugImplementation "com.bytedance.tools.codelocator:codelocator-lancet-activity:1.0.0"
+    debugImplementation "com.bytedance.tools.codelocator:codelocator-lancet-view:1.0.0"
+    debugImplementation "com.bytedance.tools.codelocator:codelocator-lancet-toast:1.0.0"
+    debugImplementation "com.bytedance.tools.codelocator:codelocator-lancet-dialog:1.0.0"
+    debugImplementation "com.bytedance.tools.codelocator:codelocator-lancet-popup:1.0.0"
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.3.1'
     implementation 'androidx.appcompat:appcompat:1.2.0'
@@ -42,5 +50,6 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation('com.facebook.fresco:fresco:2.1.0')
 }
