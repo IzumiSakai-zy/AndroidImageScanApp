@@ -32,6 +32,8 @@ class MainPageFragment : Fragment(), View.OnClickListener {
     private var imageUri: Uri? = null
 
     companion object {
+        const val TAG = "MAIN_PAGE_FRAGMENT"
+
         @JvmStatic
         fun newInstance() = MainPageFragment()
     }
@@ -48,10 +50,11 @@ class MainPageFragment : Fragment(), View.OnClickListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_main_page, container, false)
-        takeImage = view.findViewById(R.id.take_a_photo)
-        imageContent = view.findViewById(R.id.photo_content)
-        return view
+        return inflater.inflate(R.layout.fragment_main_page, container, false).let {
+            takeImage = it.findViewById(R.id.take_a_photo)
+            imageContent = it.findViewById(R.id.photo_content)
+            it
+        }
     }
 
     override fun onClick(view: View?) {
