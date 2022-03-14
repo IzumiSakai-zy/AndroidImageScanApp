@@ -35,7 +35,8 @@ def test_a_image(image_path, model_state_dict_path):
         outputs = net(image_tensor)
         _, predicted = torch.max(outputs.data, 1)
         print(predicted[0])
+        return predicted[0]
 
 
 if __name__ == "__main__":
-    test_a_image('./test_image/cat_img-39.png', './model/net_062.pth')
+    test_a_image('test_image/cat_img-39.png', './model/net_130.pth')
