@@ -58,5 +58,6 @@ lint/tmp/
 
 # train data
 cifar-10-batches-py
+image.png
 
 __pycache__

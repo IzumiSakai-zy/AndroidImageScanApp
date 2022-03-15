@@ -34,6 +34,7 @@ def test_a_image():
         # use model with parameters to evaluate the input image tensor
         outputs = net(image_tensor)
         _, predicted = torch.max(outputs.data, 1)
-        result = int(predicted[0].item())
-        print(result)
-        return str(result)
+        result_index = int(predicted[0].item())
+        class_name = classes[result_index]
+        print(class_name)
+        return str(class_name)
