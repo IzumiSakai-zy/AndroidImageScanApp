@@ -10,14 +10,14 @@ import com.whu.androidimagescanapp.R
 
 class LoginFragment : Fragment(), View.OnClickListener {
 
-    private var loginButton:ImageView? = null
-    private var backButton:ImageView? = null
-
     companion object {
         const val TAG = "LOGIN_FRAGMENT"
         @JvmStatic
         fun newInstance() = LoginFragment()
     }
+
+    private var loginButton:ImageView? = null
+    private var backButton:ImageView? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

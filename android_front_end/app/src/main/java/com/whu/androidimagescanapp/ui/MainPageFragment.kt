@@ -11,24 +11,20 @@ import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import com.whu.androidimagescanapp.R
+import com.whu.androidimagescanapp.utils.CommonUtils
 import com.whu.androidimagescanapp.utils.PermissionUtil
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 
 class MainPageFragment : Fragment(), View.OnClickListener {
-    private val REQUEST_STORAGE_PERMISSION = 1
-    private val TAKE_A_PHOTO = 2
-
-    private var takeImage: ImageView? = null
-    private var imageContent: ImageView? = null
-    private var imageUri: Uri? = null
 
     companion object {
         const val TAG = "MAIN_PAGE_FRAGMENT"
@@ -36,6 +32,13 @@ class MainPageFragment : Fragment(), View.OnClickListener {
         @JvmStatic
         fun newInstance() = MainPageFragment()
     }
+
+    private val REQUEST_STORAGE_PERMISSION = 1
+    private val TAKE_A_PHOTO = 2
+
+    private var takeImage: ImageView? = null
+    private var scannedImage: ImageView? = null
+    private var imageUri: Uri? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -51,7 +54,7 @@ class MainPageFragment : Fragment(), View.OnClickListener {
     ): View? {
         return inflater.inflate(R.layout.fragment_main_page, container, false).let {
             takeImage = it.findViewById(R.id.bottom_icon_take_a_photo)
-            imageContent = it.findViewById(R.id.photo_content)
+            scannedImage = it.findViewById(R.id.main_page_scanned_image)
             it
         }
     }
@@ -88,16 +91,6 @@ class MainPageFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == TAKE_A_PHOTO) {
-            val uri = imageUri ?: return
-            BitmapFactory.decodeStream(activity?.contentResolver?.openInputStream(uri)).let {
-                imageContent?.setImageBitmap(it)
-            }
-        }
-    }
-
     private fun requestStoragePermission() {
         ActivityCompat.requestPermissions(
             requireActivity(),
@@ -107,7 +100,7 @@ class MainPageFragment : Fragment(), View.OnClickListener {
     }
 
     private fun requestCamera() {
-        imageUri = FileProvider.getUriForFile(requireContext(), "com.whu.fileprovider", getImageFile());
+        imageUri = FileProvider.getUriForFile(requireContext(), "com.whu.fileprovider", getImageFile())
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri)
         startActivityForResult(intent, TAKE_A_PHOTO)
@@ -117,5 +110,19 @@ class MainPageFragment : Fragment(), View.OnClickListener {
         val imageName = "JPEG_${SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())}_"
         val storageDir = requireActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         return File.createTempFile(imageName, ".jpeg", storageDir)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == TAKE_A_PHOTO) {
+            val uri = imageUri ?: return
+            BitmapFactory.decodeStream(activity?.contentResolver?.openInputStream(uri)).let {
+                scannedImage?.apply {
+                    val pixValue = CommonUtils.dip2px(requireContext(), 10)
+                    setPadding(pixValue,0,pixValue,0)
+                    setImageBitmap(it)
+                }
+            }
+        }
     }
 }
