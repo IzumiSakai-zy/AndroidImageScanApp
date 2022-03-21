@@ -32,8 +32,8 @@ class LoginFragment : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        loginButton?.let { it.setOnClickListener(this) }
-        backButton?.let { it.setOnClickListener(this) }
+        loginButton?.setOnClickListener(this)
+        backButton?.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {
@@ -43,7 +43,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
                 activity?.supportFragmentManager?.apply {
                     popBackStack()
                     beginTransaction()
-                        .replace(R.id.main_activity_container, MainPageFragment.newInstance(), MainPageFragment.TAG)
+                        .replace(R.id.main_activity_container, MainContainerFragment.newInstance(), MainContainerFragment.TAG)
                         .commitAllowingStateLoss()
                 }
             }
