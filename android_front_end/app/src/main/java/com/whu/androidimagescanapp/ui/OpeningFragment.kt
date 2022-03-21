@@ -33,8 +33,8 @@ class OpeningFragment: Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        loginButton?.let { it.setOnClickListener(this) }
-        registerButton?.let { it.setOnClickListener(this) }
+        loginButton?.setOnClickListener(this)
+        registerButton?.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {

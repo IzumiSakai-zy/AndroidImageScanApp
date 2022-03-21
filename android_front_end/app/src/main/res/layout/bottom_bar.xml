@@ -10,20 +10,22 @@
     app:layout_constraintEnd_toEndOf="parent">
 
     <ImageView
-        android:id="@+id/bottom_icon_home"
+        android:id="@+id/bottom_icon_image_library"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:src="@drawable/bottom_icon_home"
+        android:src="@drawable/bottom_icon_image_library"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/bottom_icon_search" />
+
 
     <ImageView
         android:id="@+id/bottom_icon_search"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:src="@drawable/bottom_icon_search"
-        app:layout_constraintStart_toEndOf="@id/bottom_icon_home"
+        app:layout_constraintStart_toEndOf="@id/bottom_icon_image_library"
         app:layout_constraintEnd_toStartOf="@id/bottom_icon_take_a_photo" />
+
 
     <ImageView
         android:id="@+id/bottom_icon_take_a_photo"
@@ -31,22 +33,23 @@
         android:layout_height="match_parent"
         android:src="@drawable/bottom_icon_take_a_photo"
         app:layout_constraintStart_toEndOf="@id/bottom_icon_search"
-        app:layout_constraintEnd_toStartOf="@id/bottom_icon_image_library" />
+        app:layout_constraintEnd_toStartOf="@id/bottom_icon_home" />
 
     <ImageView
-        android:id="@+id/bottom_icon_image_library"
+        android:id="@+id/bottom_icon_home"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:src="@drawable/bottom_icon_image_library"
+        android:src="@drawable/bottom_icon_home"
         app:layout_constraintStart_toEndOf="@id/bottom_icon_take_a_photo"
         app:layout_constraintEnd_toStartOf="@id/bottom_icon_myself" />
+
 
     <ImageView
         android:id="@+id/bottom_icon_myself"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:src="@drawable/bottom_icon_myself"
-        app:layout_constraintStart_toEndOf="@id/bottom_icon_image_library"
+        app:layout_constraintStart_toEndOf="@id/bottom_icon_home"
         app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
