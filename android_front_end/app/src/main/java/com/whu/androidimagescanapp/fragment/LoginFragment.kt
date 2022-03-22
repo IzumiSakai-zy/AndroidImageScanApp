@@ -1,4 +1,4 @@
-package com.whu.androidimagescanapp.ui
+package com.whu.androidimagescanapp.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,6 +12,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
 
     companion object {
         const val TAG = "LOGIN_FRAGMENT"
+
         @JvmStatic
         fun newInstance() = LoginFragment()
     }
@@ -23,10 +24,9 @@ class LoginFragment : Fragment(), View.OnClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_login, container, false).let {
-            loginButton = it.findViewById(R.id.login_login_button)
-            backButton = it.findViewById(R.id.login_back_button)
-            it
+        return inflater.inflate(R.layout.fragment_login, container, false).apply {
+            loginButton = findViewById(R.id.login_login_button)
+            backButton = findViewById(R.id.login_back_button)
         }
     }
 

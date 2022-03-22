@@ -4,9 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
 import com.whu.androidimagescanapp.R
-import com.whu.androidimagescanapp.ui.OpeningFragment
+import com.whu.androidimagescanapp.fragment.OpeningFragment
 
 class MainActivity : AppCompatActivity() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,11 +17,8 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.main_activity_container,
-                    OpeningFragment.newInstance(),
-                    OpeningFragment.TAG
+                .replace(R.id.main_activity_container, OpeningFragment.newInstance(), OpeningFragment.TAG
                 )
-                .addToBackStack(OpeningFragment.TAG)
                 .commit()
         }
     }
