@@ -7,15 +7,26 @@
     android:layout_marginTop="28dp"
     android:background="@color/white">
 
+    <!--全部充满设置为0dp，而不是match_parent或warp_content-->
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/main_container_viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:background="@color/white"/>
+        android:layout_height="0dp"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottom_bar"/>
 
+    <!--include进来也要设置id和constraint-->
     <include
         android:id="@+id/bottom_bar"
-        layout="@layout/bottom_bar" />
+        layout="@layout/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@id/main_container_viewPager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
