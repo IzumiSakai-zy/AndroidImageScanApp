@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.whu.androidimagescanapp.R
-import com.whu.androidimagescanapp.adapter.SearchListAdapter
+import com.whu.androidimagescanapp.adapter.ImageRecycleAdapter
 
 class SearchFragment : Fragment() {
 
@@ -37,7 +37,7 @@ class SearchFragment : Fragment() {
         setResourceIndexList()
 
         recyclerView?.apply {
-            adapter = SearchListAdapter(imageResourceIndexList)
+            adapter = ImageRecycleAdapter(imageResourceIndexList)
             layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
         }
     }
@@ -62,5 +62,4 @@ class SearchFragment : Fragment() {
             R.drawable.search_dog_item_5
         )
     }
-
 }
