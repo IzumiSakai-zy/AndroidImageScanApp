@@ -20,7 +20,6 @@ import androidx.core.content.FileProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.whu.androidimagescanapp.R
 import com.whu.androidimagescanapp.adapter.MainContainerViewPageAdapter
-import com.whu.androidimagescanapp.utils.CommonUtils
 import com.whu.androidimagescanapp.utils.PermissionUtil
 import java.io.File
 import java.text.SimpleDateFormat
@@ -30,10 +29,10 @@ class MainContainerFragment : Fragment(), View.OnClickListener {
 
     private var viewpager2:ViewPager2? = null
 
-    private var imageLibraryIcon:ImageView? = null
+    private var homeIcon:ImageView? = null
     private var searchIcon:ImageView? = null
     private var takeImageIcon: ImageView? = null
-    private var homeIcon:ImageView? = null
+    private var historyIcon:ImageView? = null
     private var mySelfIcon:ImageView? = null
 
 
@@ -57,10 +56,10 @@ class MainContainerFragment : Fragment(), View.OnClickListener {
         return inflater.inflate(R.layout.fragment_main_container, container, false).let {
             viewpager2 = it.findViewById(R.id.main_container_viewPager)
 
-            imageLibraryIcon = it.findViewById(R.id.bottom_icon_image_library)
+            homeIcon = it.findViewById(R.id.bottom_icon_home)
             searchIcon = it.findViewById(R.id.bottom_icon_search)
             takeImageIcon = it.findViewById(R.id.bottom_icon_take_a_photo)
-            homeIcon = it.findViewById(R.id.bottom_icon_home)
+            historyIcon = it.findViewById(R.id.bottom_icon_history)
             mySelfIcon = it.findViewById(R.id.bottom_icon_myself)
 
             it
@@ -74,20 +73,21 @@ class MainContainerFragment : Fragment(), View.OnClickListener {
         MainContainerViewPageAdapter(requireActivity()).apply {
             viewPageAdapter = this
             viewpager2?.adapter = this
+            viewpager2?.offscreenPageLimit = 2
         }
 
-        imageLibraryIcon?.setOnClickListener(this)
+        homeIcon?.setOnClickListener(this)
         searchIcon?.setOnClickListener(this)
         takeImageIcon?.setOnClickListener(this)
-        homeIcon?.setOnClickListener(this)
+        historyIcon?.setOnClickListener(this)
         mySelfIcon?.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {
         val clickedView = view ?: return
         when (clickedView.id) {
-            R.id.bottom_icon_image_library -> {
-
+            R.id.bottom_icon_home -> {
+                viewpager2?.currentItem = MainContainerViewPageAdapter.HOME_PAGE_INDEX
             }
             R.id.bottom_icon_search -> {
                 viewpager2?.currentItem = MainContainerViewPageAdapter.SEARCH_PAGE_INDEX
@@ -103,8 +103,8 @@ class MainContainerFragment : Fragment(), View.OnClickListener {
                     requestStoragePermission()
                 }
             }
-            R.id.bottom_icon_home -> {
-                viewpager2?.currentItem = MainContainerViewPageAdapter.HOME_PAGE_INDEX
+            R.id.bottom_icon_history -> {
+                viewpager2?.currentItem = MainContainerViewPageAdapter.HISTORY_PAGE_INDEX
             }
             R.id.bottom_icon_myself -> {
                 viewpager2?.currentItem = MainContainerViewPageAdapter.MY_SELF_PAGE_INDEX
@@ -154,8 +154,6 @@ class MainContainerFragment : Fragment(), View.OnClickListener {
             val uri = imageUri ?: return
             BitmapFactory.decodeStream(activity?.contentResolver?.openInputStream(uri)).let {
                 viewPageAdapter?.getHomePageFragmentScannedView()?.apply {
-                    val pixValue = CommonUtils.dip2px(requireContext(), 10)
-                    setPadding(pixValue,0,pixValue,0)
                     setImageBitmap(it)
                 }
             }
