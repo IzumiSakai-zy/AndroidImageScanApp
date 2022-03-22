@@ -1,4 +1,4 @@
-package com.whu.androidimagescanapp.ui
+package com.whu.androidimagescanapp.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

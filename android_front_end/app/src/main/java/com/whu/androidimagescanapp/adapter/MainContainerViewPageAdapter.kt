@@ -5,10 +5,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.whu.androidimagescanapp.R
-import com.whu.androidimagescanapp.ui.HistoryFragment
-import com.whu.androidimagescanapp.ui.HomePageFragment
-import com.whu.androidimagescanapp.ui.MySelfFragment
-import com.whu.androidimagescanapp.ui.SearchFragment
+import com.whu.androidimagescanapp.fragment.HistoryFragment
+import com.whu.androidimagescanapp.fragment.HomePageFragment
+import com.whu.androidimagescanapp.fragment.MySelfFragment
+import com.whu.androidimagescanapp.fragment.SearchFragment
 
 class MainContainerViewPageAdapter(activity: FragmentActivity) : FragmentStateAdapter(activity) {
     companion object {
@@ -39,5 +39,4 @@ class MainContainerViewPageAdapter(activity: FragmentActivity) : FragmentStateAd
         }
 
     override fun getItemCount(): Int = FRAGMENT_TOTAL_COUNT
-
 }

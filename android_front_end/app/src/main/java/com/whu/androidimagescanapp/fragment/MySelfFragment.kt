@@ -1,4 +1,4 @@
-package com.whu.androidimagescanapp.ui
+package com.whu.androidimagescanapp.fragment
 
 import android.graphics.BitmapFactory
 import android.os.Bundle
@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.whu.androidimagescanapp.R
 import com.whu.androidimagescanapp.adapter.ImageRecycleAdapter
+import com.whu.androidimagescanapp.utils.CommonUtils
 
 class MySelfFragment : Fragment(), View.OnClickListener {
 
@@ -84,7 +85,9 @@ class MySelfFragment : Fragment(), View.OnClickListener {
     override fun onClick(view: View?) {
         view ?: return
         when(view.id) {
-            R.id.myself_head_avatar,
+            R.id.myself_head_avatar -> {
+                CommonUtils.previewImage(activity, headAvatar)
+            }
             R.id.myself_name_and_location,
             R.id.myself_follow_button,
             R.id.myself_learn_more_button -> {

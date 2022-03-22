@@ -1,4 +1,4 @@
-package com.whu.androidimagescanapp.ui
+package com.whu.androidimagescanapp.fragment
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -35,7 +35,6 @@ class MainContainerFragment : Fragment(), View.OnClickListener {
     private var historyIcon:ImageView? = null
     private var mySelfIcon:ImageView? = null
 
-
     private var viewPageAdapter:MainContainerViewPageAdapter? = null
     private var imageUri: Uri? = null
 
@@ -53,16 +52,14 @@ class MainContainerFragment : Fragment(), View.OnClickListener {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main_container, container, false).let {
-            viewpager2 = it.findViewById(R.id.main_container_viewPager)
+        return inflater.inflate(R.layout.fragment_main_container, container, false).apply {
+            viewpager2 = findViewById(R.id.main_container_viewPager)
 
-            homeIcon = it.findViewById(R.id.bottom_icon_home)
-            searchIcon = it.findViewById(R.id.bottom_icon_search)
-            takeImageIcon = it.findViewById(R.id.bottom_icon_take_a_photo)
-            historyIcon = it.findViewById(R.id.bottom_icon_history)
-            mySelfIcon = it.findViewById(R.id.bottom_icon_myself)
-
-            it
+            homeIcon = findViewById(R.id.bottom_icon_home)
+            searchIcon = findViewById(R.id.bottom_icon_search)
+            takeImageIcon = findViewById(R.id.bottom_icon_take_a_photo)
+            historyIcon = findViewById(R.id.bottom_icon_history)
+            mySelfIcon = findViewById(R.id.bottom_icon_myself)
         }
     }
 
@@ -138,10 +135,7 @@ class MainContainerFragment : Fragment(), View.OnClickListener {
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
-        if (grantResults.isNotEmpty()
-            && grantResults[0] == PackageManager.PERMISSION_GRANTED
-            && requestCode == REQUEST_STORAGE_PERMISSION
-        ) {
+        if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED && requestCode == REQUEST_STORAGE_PERMISSION) {
             requestCamera()
         } else {
             Toast.makeText(requireContext(), "请授予存储权限后再试", Toast.LENGTH_LONG).show()

@@ -1,4 +1,4 @@
-package com.whu.androidimagescanapp.ui
+package com.whu.androidimagescanapp.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -28,9 +28,8 @@ class HistoryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_history, container, false).let {
-            recycleView = it.findViewById(R.id.history_recycle_view)
-            it
+        return inflater.inflate(R.layout.fragment_history, container, false).apply {
+            recycleView = findViewById(R.id.history_recycle_view)
         }
     }
 
