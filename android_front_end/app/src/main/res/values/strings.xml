@@ -5,4 +5,8 @@
     <string name="main_page_predicted_result">It\'s a dog</string>
 
     <string name="search_keyword">&#160;dog</string>
+
+    <string name="type_classification">Image&#160;Classification</string>
+    <string name="type_ocr">OCR</string>
+    <string name="have_not_implement">This feature haven\'t implemented</string>
 </resources>

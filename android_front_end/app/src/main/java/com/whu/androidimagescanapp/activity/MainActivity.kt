@@ -1,9 +1,10 @@
-package com.whu.androidimagescanapp.ui
+package com.whu.androidimagescanapp.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
 import com.whu.androidimagescanapp.R
+import com.whu.androidimagescanapp.ui.OpeningFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,7 +16,10 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.main_activity_container, OpeningFragment.newInstance(), OpeningFragment.TAG)
+                .replace(R.id.main_activity_container,
+                    OpeningFragment.newInstance(),
+                    OpeningFragment.TAG
+                )
                 .addToBackStack(OpeningFragment.TAG)
                 .commit()
         }
