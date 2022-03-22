@@ -107,9 +107,8 @@ class MainContainerFragment : Fragment(), View.OnClickListener {
                 viewpager2?.currentItem = MainContainerViewPageAdapter.HOME_PAGE_INDEX
             }
             R.id.bottom_icon_myself -> {
-
+                viewpager2?.currentItem = MainContainerViewPageAdapter.MY_SELF_PAGE_INDEX
             }
-
         }
     }
 
@@ -160,7 +159,6 @@ class MainContainerFragment : Fragment(), View.OnClickListener {
                     setImageBitmap(it)
                 }
             }
-
             viewpager2?.currentItem = MainContainerViewPageAdapter.HOME_PAGE_INDEX
         }
     }

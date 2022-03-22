@@ -4,10 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.whu.androidimagescanapp.R
-import com.whu.androidimagescanapp.viewholder.SearchItemViewHolder
-import com.whu.androidimagescanapp.viewholder.SearchSeeMoreItemViewHolder
+import com.whu.androidimagescanapp.viewholder.ImageViewHolder
+import com.whu.androidimagescanapp.viewholder.SeeMoreImageViewHolder
 
-class SearchListAdapter(private val imageResourceIdList:List<Int>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ImageRecycleAdapter(private val imageResourceIdList:List<Int>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
         private const val ITEM_IMAGE = 0
@@ -16,11 +16,11 @@ class SearchListAdapter(private val imageResourceIdList:List<Int>): RecyclerView
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
         if (viewType == ITEM_SEE_MORE) {
-            SearchSeeMoreItemViewHolder(
+            SeeMoreImageViewHolder(
                 LayoutInflater.from(parent.context).inflate(R.layout.recycle_item_see_more_search, parent, false)
             )
         } else {
-            SearchItemViewHolder(
+            ImageViewHolder(
                 LayoutInflater.from(parent.context).inflate(R.layout.recycle_item_search, parent, false)
             )
         }
@@ -28,8 +28,8 @@ class SearchListAdapter(private val imageResourceIdList:List<Int>): RecyclerView
     override fun getItemCount(): Int = imageResourceIdList.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as? SearchItemViewHolder)?.imageItemView?.setImageResource(imageResourceIdList[position])
-        (holder as? SearchSeeMoreItemViewHolder)?.imageItemView?.setImageResource(imageResourceIdList[position])
+        (holder as? ImageViewHolder)?.imageItemView?.setImageResource(imageResourceIdList[position])
+        (holder as? SeeMoreImageViewHolder)?.imageItemView?.setImageResource(imageResourceIdList[position])
     }
 
     override fun getItemViewType(position: Int): Int =
