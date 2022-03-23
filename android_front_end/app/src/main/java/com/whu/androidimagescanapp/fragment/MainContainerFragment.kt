@@ -20,6 +20,7 @@ import androidx.core.content.FileProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.whu.androidimagescanapp.R
 import com.whu.androidimagescanapp.adapter.MainContainerViewPageAdapter
+import com.whu.androidimagescanapp.utils.CommonUtils
 import com.whu.androidimagescanapp.utils.PermissionUtil
 import java.io.File
 import java.text.SimpleDateFormat
@@ -146,10 +147,10 @@ class MainContainerFragment : Fragment(), View.OnClickListener {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == TAKE_A_PHOTO) {
             val uri = imageUri ?: return
-            BitmapFactory.decodeStream(activity?.contentResolver?.openInputStream(uri)).let {
-                viewPageAdapter?.getHomePageFragmentScannedView()?.apply {
-                    setImageBitmap(it)
-                }
+            val originBitmap = BitmapFactory.decodeStream(activity?.contentResolver?.openInputStream(uri)) ?: return
+            val croppedAndBlurredBitmap = CommonUtils.getCroppedAndBlurredBitmap(originBitmap)
+            viewPageAdapter?.getHomePageFragmentScannedView()?.apply {
+                setImageBitmap(croppedAndBlurredBitmap)
             }
             viewpager2?.currentItem = MainContainerViewPageAdapter.HOME_PAGE_INDEX
         }

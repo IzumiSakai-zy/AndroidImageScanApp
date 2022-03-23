@@ -1,6 +1,7 @@
 package com.whu.androidimagescanapp.utils
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.view.ViewCompat
@@ -26,5 +27,22 @@ object CommonUtils {
             .replace(R.id.main_activity_container, ImageZoomPreviewFragment.newInstance(imageView.drawToBitmap()), ImageZoomPreviewFragment.TAG)
             .addToBackStack(ImageZoomPreviewFragment.TAG)
             .commit()
+    }
+
+    fun getCroppedAndBlurredBitmap(source:Bitmap):Bitmap {
+
+        val height = source.height
+        val width = source.width
+
+        val croppedBitmap =  when {
+            height == width -> source
+            height > width -> {
+                Bitmap.createBitmap(source,0,(height - width)/2, width, width,null,true)
+            }
+            else -> {
+                Bitmap.createBitmap(source,(width - height) / 2,0, height, height,null,true)
+            }
+        }
+        return Bitmap.createScaledBitmap(croppedBitmap, ConstValueUtil.CLASSIFICATION_IMAGE_PIXEL, ConstValueUtil.CLASSIFICATION_IMAGE_PIXEL,true)
     }
 }
