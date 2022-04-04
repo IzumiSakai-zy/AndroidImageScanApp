@@ -12,30 +12,32 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # 参数设置,使得我们能够手动输入命令行参数，就是让风格变得和Linux命令行差不多
 parser = argparse.ArgumentParser(description='PyTorch CIFAR10 Training')
-parser.add_argument('--outf', default='./out/model/', help='folder to output images and model checkpoints') #输出结果保存路径
+parser.add_argument('--outf', default='./out/model/', help='folder to output images and model checkpoints')  # 输出结果保存路径
 args = parser.parse_args()
 
 # 超参数设置
-EPOCH = 135   #遍历数据集次数
+EPOCH = 135  # 遍历数据集次数
 pre_epoch = 0  # 定义已经遍历数据集的次数
-BATCH_SIZE = 128      #批处理尺寸(batch_size)
-LR = 0.01        #学习率
+BATCH_SIZE = 128  # 批处理尺寸(batch_size)
+LR = 0.01  # 学习率
 
 # 准备数据集并预处理
 transform_train = transforms.Compose([
-    transforms.RandomCrop(32, padding=4),  #先四周填充0，在把图像随机裁剪成32*32
-    transforms.RandomHorizontalFlip(),  #图像一半的概率翻转，一半的概率不翻转
+    transforms.RandomCrop(32, padding=4),  # 先四周填充0，在把图像随机裁剪成32*32
+    transforms.RandomHorizontalFlip(),  # 图像一半的概率翻转，一半的概率不翻转
     transforms.ToTensor(),
-    transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)), #R,G,B每层的归一化用到的均值和方差
-    ])
+    transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),  # R,G,B每层的归一化用到的均值和方差
+])
 
 transform_test = transforms.Compose([
     transforms.ToTensor(),
     transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),
-    ])
+])
 
-trainset = torchvision.datasets.CIFAR10(root='./out/data', train=True, download=True, transform=transform_train) #训练数据集
-trainloader = torch.utils.data.DataLoader(trainset, batch_size=BATCH_SIZE, shuffle=True, num_workers=0)   #生成一个个batch进行批训练，组成batch的时候顺序打乱取
+trainset = torchvision.datasets.CIFAR10(root='./out/data', train=True, download=True,
+                                        transform=transform_train)  # 训练数据集
+trainloader = torch.utils.data.DataLoader(trainset, batch_size=BATCH_SIZE, shuffle=True,
+                                          num_workers=0)  # 生成一个个batch进行批训练，组成batch的时候顺序打乱取
 
 testset = torchvision.datasets.CIFAR10(root='./out/data', train=False, download=True, transform=transform_test)
 testloader = torch.utils.data.DataLoader(testset, batch_size=100, shuffle=False, num_workers=2)
@@ -46,8 +48,9 @@ classes = ('plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship'
 net = ResNet18().to(device)
 
 # 定义损失函数和优化方式
-criterion = nn.CrossEntropyLoss()  #损失函数为交叉熵，多用于多分类问题
-optimizer = optim.SGD(net.parameters(), lr=LR, momentum=0.9, weight_decay=5e-4) #优化方式为mini-batch momentum-SGD，并采用L2正则化（权重衰减）
+criterion = nn.CrossEntropyLoss()  # 损失函数为交叉熵，多用于多分类问题
+optimizer = optim.SGD(net.parameters(), lr=LR, momentum=0.9,
+                      weight_decay=5e-4)  # 优化方式为mini-batch momentum-SGD，并采用L2正则化（权重衰减）
 
 # 训练
 if __name__ == "__main__":
@@ -55,7 +58,7 @@ if __name__ == "__main__":
         os.makedirs(args.outf)
     print("Start Training, Resnet-18!")  # 定义遍历数据集的次数
     with open("./out/acc.txt", "w") as acc_file:
-        with open("./out/log.txt", "w")as log_file:
+        with open("./out/log.txt", "w") as log_file:
             for epoch in range(pre_epoch, EPOCH):
                 print('Epoch: %d' % (epoch + 1))
                 net.train()
@@ -81,7 +84,7 @@ if __name__ == "__main__":
                     total += labels.size(0)
                     correct += predicted.eq(labels.data).cpu().sum()
                     print('%03d  %05d |Loss: %.03f | Acc: %.3f%%'
-                                   % (epoch + 1, (i + 1 + epoch * length), sum_loss / (i + 1), 100. * correct / total))
+                          % (epoch + 1, (i + 1 + epoch * length), sum_loss / (i + 1), 100. * correct / total))
                     log_file.write('%03d  %05d |Loss: %.03f | Acc: %.3f%%\n'
                                    % (epoch + 1, (i + 1 + epoch * length), sum_loss / (i + 1), 100. * correct / total))
                     log_file.flush()

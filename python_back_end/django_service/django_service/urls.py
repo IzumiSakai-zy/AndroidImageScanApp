@@ -21,5 +21,5 @@ from .views import hello_world, classfy_image
 urlpatterns = [
     path('admin/', admin.site.urls),
     url('hello/', hello_world.hello_world),
-    url('image/', classfy_image.classfy_image)
+    url('image/', classfy_image.classify_image)
 ]

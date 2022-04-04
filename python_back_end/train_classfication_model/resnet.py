@@ -13,6 +13,8 @@ class ResidualBlock(nn.Module):
             nn.BatchNorm2d(outchannel)
         )
         self.shortcut = nn.Sequential()
+        # 经过处理后的x要与x的维度相同(尺寸和深度)
+        # 如果不相同，需要添加卷积+BN来变换为同一维度
         if stride != 1 or inchannel != outchannel:
             self.shortcut = nn.Sequential(
                 nn.Conv2d(inchannel, outchannel, kernel_size=1, stride=stride, bias=False),
