@@ -61,3 +61,6 @@ cifar-10-batches-py
 image.png
 
 __pycache__
+
+# mac desktop
+.DS_Store
