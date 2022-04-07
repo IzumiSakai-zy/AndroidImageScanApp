@@ -45,19 +45,19 @@ class HistoryFragment : Fragment() {
 
     private fun setItemList() {
         itemList = listOf(
-            HistoryItem(HistoryItem.CLASSFICATION_TYPE, R.drawable.search_dog_item_1, requireContext().getString(R.string.main_page_predicted_result)),
-            HistoryItem(HistoryItem.CLASSFICATION_TYPE, R.drawable.search_dog_item_2, requireContext().getString(R.string.main_page_predicted_result)),
-            HistoryItem(HistoryItem.CLASSFICATION_TYPE, R.drawable.search_dog_item_3, requireContext().getString(R.string.main_page_predicted_result)),
-            HistoryItem(HistoryItem.CLASSFICATION_TYPE, R.drawable.search_dog_item_4, requireContext().getString(R.string.main_page_predicted_result)),
-            HistoryItem(HistoryItem.CLASSFICATION_TYPE, R.drawable.search_dog_item_5, requireContext().getString(R.string.main_page_predicted_result)),
-            HistoryItem(HistoryItem.CLASSFICATION_TYPE, R.drawable.search_dog_item_6, requireContext().getString(R.string.main_page_predicted_result)),
-            HistoryItem(HistoryItem.CLASSFICATION_TYPE, R.drawable.search_dog_item_7, requireContext().getString(R.string.main_page_predicted_result)),
-            HistoryItem(HistoryItem.CLASSFICATION_TYPE, R.drawable.search_dog_item_8, requireContext().getString(R.string.main_page_predicted_result)),
-            HistoryItem(HistoryItem.CLASSFICATION_TYPE, R.drawable.search_dog_item_9, requireContext().getString(R.string.main_page_predicted_result)),
-            HistoryItem(HistoryItem.CLASSFICATION_TYPE, R.drawable.search_dog_item_10, requireContext().getString(R.string.main_page_predicted_result)),
-            HistoryItem(HistoryItem.CLASSFICATION_TYPE, R.drawable.search_dog_item_11, requireContext().getString(R.string.main_page_predicted_result)),
-            HistoryItem(HistoryItem.CLASSFICATION_TYPE, R.drawable.search_dog_item_12, requireContext().getString(R.string.main_page_predicted_result)),
-            HistoryItem(HistoryItem.CLASSFICATION_TYPE, R.drawable.search_dog_item_13, requireContext().getString(R.string.main_page_predicted_result)),
+            HistoryItem(HistoryItem.CLASSIFICATION_TYPE, R.drawable.search_dog_item_1, requireContext().getString(R.string.main_page_predicted_result)),
+            HistoryItem(HistoryItem.CLASSIFICATION_TYPE, R.drawable.history_horse_1, "It's a horse"),
+            HistoryItem(HistoryItem.OCR_TYPE, R.drawable.history_ocr_1, "在北伐大军;全局已定的开下一左簿相李善长率众官于朱元璋面月劝进二至正三于从年:3136833E月初"),
+            HistoryItem(HistoryItem.CLASSIFICATION_TYPE, R.drawable.history_airplane_1, "It's a airplane"),
+            HistoryItem(HistoryItem.OCR_TYPE, R.drawable.history_ocr_2, "句子问答 What's your name?"),
+            HistoryItem(HistoryItem.CLASSIFICATION_TYPE, R.drawable.search_dog_item_6, requireContext().getString(R.string.main_page_predicted_result)),
+            HistoryItem(HistoryItem.CLASSIFICATION_TYPE, R.drawable.search_dog_item_7, requireContext().getString(R.string.main_page_predicted_result)),
+            HistoryItem(HistoryItem.CLASSIFICATION_TYPE, R.drawable.search_dog_item_8, requireContext().getString(R.string.main_page_predicted_result)),
+            HistoryItem(HistoryItem.CLASSIFICATION_TYPE, R.drawable.search_dog_item_9, requireContext().getString(R.string.main_page_predicted_result)),
+            HistoryItem(HistoryItem.CLASSIFICATION_TYPE, R.drawable.search_dog_item_10, requireContext().getString(R.string.main_page_predicted_result)),
+            HistoryItem(HistoryItem.CLASSIFICATION_TYPE, R.drawable.search_dog_item_11, requireContext().getString(R.string.main_page_predicted_result)),
+            HistoryItem(HistoryItem.CLASSIFICATION_TYPE, R.drawable.search_dog_item_12, requireContext().getString(R.string.main_page_predicted_result)),
+            HistoryItem(HistoryItem.CLASSIFICATION_TYPE, R.drawable.search_dog_item_13, requireContext().getString(R.string.main_page_predicted_result)),
         )
     }
 }

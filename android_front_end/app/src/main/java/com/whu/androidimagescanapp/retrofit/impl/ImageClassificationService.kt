@@ -8,5 +8,5 @@ import io.reactivex.Observable
 object ImageClassificationService {
     private val service = RetrofitUtil.getRetrofitService().create(IImageClassificationService::class.java)
 
-    fun getImageClassType(): Observable<ImageClassTypeResponse> = service.getImageClassType()
+    fun getImageClassType(): Observable<ImageClassTypeResponse>  = service.getImageClassType()
 }

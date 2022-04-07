@@ -12,6 +12,7 @@ import com.whu.androidimagescanapp.utils.CommonUtils
 class HistoryItemViewHolder(view:View):RecyclerView.ViewHolder(view) {
     val imageView:ImageView = view.findViewById(R.id.history_item_image)
     val resultText:TextView = view.findViewById(R.id.history_item_result_text)
+    val resultType:TextView = view.findViewById(R.id.history_item_result_type)
     private val seeMorePoint:ImageView = view.findViewById(R.id.history_see_more_point)
 
     init {

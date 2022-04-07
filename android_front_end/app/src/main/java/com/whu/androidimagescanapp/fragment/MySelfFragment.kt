@@ -26,7 +26,7 @@ class MySelfFragment : Fragment(), View.OnClickListener {
 
     private var headAvatar:ImageView? = null
     private var nameAndLocationIcon:ImageView? = null
-    private var followButton:ImageView? = null
+    private var moreSettingsButton:ImageView? = null
     private var learnMoreButton:ImageView? = null
     private var recycleList:RecyclerView? = null
 
@@ -40,7 +40,7 @@ class MySelfFragment : Fragment(), View.OnClickListener {
         return inflater.inflate(R.layout.fragment_my_self, container, false).let {
             headAvatar = it.findViewById(R.id.myself_head_avatar)
             nameAndLocationIcon = it.findViewById(R.id.myself_name_and_location)
-            followButton = it.findViewById(R.id.myself_follow_button)
+            moreSettingsButton = it.findViewById(R.id.myself_more_settings_button)
             learnMoreButton = it.findViewById(R.id.myself_learn_more_button)
             recycleList = it.findViewById(R.id.myself_recycle_view)
             it
@@ -67,7 +67,7 @@ class MySelfFragment : Fragment(), View.OnClickListener {
         //设置onClickListener
         headAvatar?.setOnClickListener(this)
         nameAndLocationIcon?.setOnClickListener(this)
-        followButton?.setOnClickListener(this)
+        moreSettingsButton?.setOnClickListener(this)
         learnMoreButton?.setOnClickListener(this)
     }
 
@@ -89,7 +89,7 @@ class MySelfFragment : Fragment(), View.OnClickListener {
                 CommonUtils.previewImage(activity, headAvatar)
             }
             R.id.myself_name_and_location,
-            R.id.myself_follow_button,
+            R.id.myself_more_settings_button,
             R.id.myself_learn_more_button -> {
                 Toast.makeText(view.context, view.context.getString(R.string.have_not_implement), Toast.LENGTH_SHORT).show()
             }
