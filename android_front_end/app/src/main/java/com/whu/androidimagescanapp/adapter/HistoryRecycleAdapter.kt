@@ -20,6 +20,9 @@ class HistoryRecycleAdapter(private val itemList: List<HistoryItem>):RecyclerVie
         (holder as? HistoryItemViewHolder)?.apply {
             imageView.setImageDrawable(ResourcesCompat.getDrawable(imageView.resources, itemList[position].drawableId, null))
             resultText.text = itemList[position].result
+            if (itemList[position].type == HistoryItem.OCR_TYPE) {
+                resultType.text = "OCR"
+            }
         }
     }
 

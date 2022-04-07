@@ -2,6 +2,7 @@ package com.whu.androidimagescanapp.fragment
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
@@ -17,11 +18,15 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.whu.androidimagescanapp.R
 import com.whu.androidimagescanapp.adapter.MainContainerViewPageAdapter
 import com.whu.androidimagescanapp.utils.CommonUtils
 import com.whu.androidimagescanapp.utils.PermissionUtil
+import com.whu.androidimagescanapp.viewmodel.HomePageViewModel
+import com.whu.androidimagescanapp.viewmodel.HomePageViewModelFactory
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
@@ -39,6 +44,8 @@ class MainContainerFragment : Fragment(), View.OnClickListener {
     private var viewPageAdapter:MainContainerViewPageAdapter? = null
     private var imageUri: Uri? = null
 
+    private var viewModel: HomePageViewModel? = null
+
     companion object {
         const val TAG = "main_container_fragment"
         private const val REQUEST_STORAGE_PERMISSION = 1
@@ -46,6 +53,11 @@ class MainContainerFragment : Fragment(), View.OnClickListener {
 
         @JvmStatic
         fun newInstance() = MainContainerFragment()
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        viewModel  = ViewModelProvider(requireActivity(), HomePageViewModelFactory()).get(HomePageViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -150,7 +162,8 @@ class MainContainerFragment : Fragment(), View.OnClickListener {
             val originBitmap = BitmapFactory.decodeStream(activity?.contentResolver?.openInputStream(uri)) ?: return
             val croppedAndBlurredBitmap = CommonUtils.getCroppedAndBlurredBitmap(originBitmap)
             viewPageAdapter?.getHomePageFragmentScannedView()?.apply {
-                setImageBitmap(croppedAndBlurredBitmap)
+                setImageBitmap(originBitmap)
+                viewModel?.updateResult(croppedAndBlurredBitmap)
             }
             viewpager2?.currentItem = MainContainerViewPageAdapter.HOME_PAGE_INDEX
         }
