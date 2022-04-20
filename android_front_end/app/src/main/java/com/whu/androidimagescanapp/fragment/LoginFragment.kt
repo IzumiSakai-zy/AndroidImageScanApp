@@ -17,8 +17,8 @@ class LoginFragment : Fragment(), View.OnClickListener {
         fun newInstance() = LoginFragment()
     }
 
-    private var loginButton:ImageView? = null
-    private var backButton:ImageView? = null
+    private var loginButton: ImageView? = null
+    private var backButton: ImageView? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,12 +38,16 @@ class LoginFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(view: View?) {
         view ?: return
-        when(view.id) {
+        when (view.id) {
             R.id.login_login_button -> {
                 activity?.supportFragmentManager?.apply {
                     popBackStack()
                     beginTransaction()
-                        .replace(R.id.main_activity_container, MainContainerFragment.newInstance(), MainContainerFragment.TAG)
+                        .replace(
+                            R.id.main_activity_container,
+                            MainContainerFragment.newInstance(),
+                            MainContainerFragment.TAG
+                        )
                         .commitAllowingStateLoss()
                 }
             }

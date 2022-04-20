@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.whu.androidimagescanapp.R
 import com.whu.androidimagescanapp.utils.CommonUtils
 
-class ImageViewHolder(view:View):RecyclerView.ViewHolder(view) {
+class ImageViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val imageItemView: ImageView = view.findViewById(R.id.search_recycle_item)
 
     init {

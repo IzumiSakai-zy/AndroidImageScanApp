@@ -24,15 +24,18 @@ class HomePageFragment : Fragment(), View.OnClickListener {
         fun newInstance() = HomePageFragment()
     }
 
-    var scannedImage:ImageView? = null
-    private var nameEmailIcon:ImageView? = null
-    private var predictedResult:TextView? = null
+    var scannedImage: ImageView? = null
+    private var nameEmailIcon: ImageView? = null
+    private var predictedResult: TextView? = null
 
     private var viewModel: HomePageViewModel? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        viewModel  = ViewModelProvider(requireActivity(), HomePageViewModelFactory()).get(HomePageViewModel::class.java)
+        viewModel = ViewModelProvider(
+            requireActivity(),
+            HomePageViewModelFactory()
+        ).get(HomePageViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -59,12 +62,16 @@ class HomePageFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(view: View?) {
         view ?: return
-        when(view.id) {
+        when (view.id) {
             R.id.home_page_scanned_image -> {
                 CommonUtils.previewImage(activity, scannedImage)
             }
             R.id.home_page_scanned_bottom_icon -> {
-                Toast.makeText(view.context, view.context.getString(R.string.have_not_implement), Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    view.context,
+                    view.context.getString(R.string.have_not_implement),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }

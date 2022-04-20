@@ -6,10 +6,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class HomePageViewModel:ViewModel() {
+class HomePageViewModel : ViewModel() {
     private val _result = MutableLiveData<String>()
 
-    val result:LiveData<String>
+    val result: LiveData<String>
         get() = _result
 
     init {
@@ -17,7 +17,7 @@ class HomePageViewModel:ViewModel() {
     }
 
     @SuppressLint("CheckResult")
-    fun updateResult(bitmap:Bitmap) {
+    fun updateResult(result: String) {
         _result.value = "It's a cat"
     }
 

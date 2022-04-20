@@ -24,13 +24,13 @@ class MySelfFragment : Fragment(), View.OnClickListener {
         fun newInstance() = MySelfFragment()
     }
 
-    private var headAvatar:ImageView? = null
-    private var nameAndLocationIcon:ImageView? = null
-    private var moreSettingsButton:ImageView? = null
-    private var learnMoreButton:ImageView? = null
-    private var recycleList:RecyclerView? = null
+    private var headAvatar: ImageView? = null
+    private var nameAndLocationIcon: ImageView? = null
+    private var moreSettingsButton: ImageView? = null
+    private var learnMoreButton: ImageView? = null
+    private var recycleList: RecyclerView? = null
 
-    private lateinit var imageResourceIndexList:List<Int>
+    private lateinit var imageResourceIndexList: List<Int>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -84,14 +84,18 @@ class MySelfFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(view: View?) {
         view ?: return
-        when(view.id) {
+        when (view.id) {
             R.id.myself_head_avatar -> {
                 CommonUtils.previewImage(activity, headAvatar)
             }
             R.id.myself_name_and_location,
             R.id.myself_more_settings_button,
             R.id.myself_learn_more_button -> {
-                Toast.makeText(view.context, view.context.getString(R.string.have_not_implement), Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    view.context,
+                    view.context.getString(R.string.have_not_implement),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }

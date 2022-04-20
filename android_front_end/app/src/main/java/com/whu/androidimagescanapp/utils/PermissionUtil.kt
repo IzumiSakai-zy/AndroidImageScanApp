@@ -7,6 +7,6 @@ import androidx.core.content.ContextCompat
 
 object PermissionUtil {
 
-    fun checkPermission(context:Context, permission:String): Boolean =
+    fun checkPermission(context: Context, permission: String): Boolean =
         ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED
 }

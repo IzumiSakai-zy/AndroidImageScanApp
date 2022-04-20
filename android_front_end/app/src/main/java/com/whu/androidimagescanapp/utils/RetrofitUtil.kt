@@ -11,6 +11,6 @@ object RetrofitUtil {
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())//添加RXJava相关内容
         .build()
 
-    fun getRetrofitService():Retrofit = retrofit
+    fun getRetrofitService(): Retrofit = retrofit
 
 }
