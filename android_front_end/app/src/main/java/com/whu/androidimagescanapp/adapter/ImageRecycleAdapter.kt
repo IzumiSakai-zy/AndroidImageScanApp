@@ -7,7 +7,8 @@ import com.whu.androidimagescanapp.R
 import com.whu.androidimagescanapp.viewholder.ImageViewHolder
 import com.whu.androidimagescanapp.viewholder.SeeMoreImageViewHolder
 
-class ImageRecycleAdapter(private val imageResourceIdList:List<Int>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ImageRecycleAdapter(private val imageResourceIdList: List<Int>) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
         private const val ITEM_IMAGE = 0
@@ -17,11 +18,13 @@ class ImageRecycleAdapter(private val imageResourceIdList:List<Int>): RecyclerVi
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
         if (viewType == ITEM_SEE_MORE) {
             SeeMoreImageViewHolder(
-                LayoutInflater.from(parent.context).inflate(R.layout.recycle_item_see_more_search, parent, false)
+                LayoutInflater.from(parent.context)
+                    .inflate(R.layout.recycle_item_see_more_search, parent, false)
             )
         } else {
             ImageViewHolder(
-                LayoutInflater.from(parent.context).inflate(R.layout.recycle_item_search, parent, false)
+                LayoutInflater.from(parent.context)
+                    .inflate(R.layout.recycle_item_search, parent, false)
             )
         }
 

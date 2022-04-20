@@ -11,38 +11,51 @@ import com.whu.androidimagescanapp.R
 import com.whu.androidimagescanapp.fragment.ImageZoomPreviewFragment
 
 object CommonUtils {
-    fun dip2px(context: Context, dpValue:Int):Int {
+    fun dip2px(context: Context, dpValue: Int): Int {
         val scale = context.resources.displayMetrics.density
-        return  (dpValue * scale + 0.5f).toInt()
+        return (dpValue * scale + 0.5f).toInt()
     }
 
     fun previewImage(fragmentActivity: FragmentActivity?, imageView: ImageView?) {
         fragmentActivity ?: return
         imageView ?: return
         if (!ViewCompat.isLaidOut(imageView)) {
-            Toast.makeText(fragmentActivity, fragmentActivity.getString(R.string.try_again_letter), Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                fragmentActivity,
+                fragmentActivity.getString(R.string.try_again_letter),
+                Toast.LENGTH_SHORT
+            ).show()
             return
         }
         fragmentActivity.supportFragmentManager.beginTransaction()
-            .replace(R.id.main_activity_container, ImageZoomPreviewFragment.newInstance(imageView.drawToBitmap()), ImageZoomPreviewFragment.TAG)
+            .replace(
+                R.id.main_activity_container,
+                ImageZoomPreviewFragment.newInstance(imageView.drawToBitmap()),
+                ImageZoomPreviewFragment.TAG
+            )
             .addToBackStack(ImageZoomPreviewFragment.TAG)
             .commit()
     }
 
-    fun getCroppedAndBlurredBitmap(source:Bitmap):Bitmap {
+    fun getCroppedAndBlurredBitmap(source: Bitmap): Bitmap {
 
         val height = source.height
         val width = source.width
 
-        val croppedBitmap =  when {
+        val croppedBitmap = when {
             height == width -> source
             height > width -> {
-                Bitmap.createBitmap(source,0,(height - width)/2, width, width,null,true)
+                Bitmap.createBitmap(source, 0, (height - width) / 2, width, width, null, true)
             }
             else -> {
-                Bitmap.createBitmap(source,(width - height) / 2,0, height, height,null,true)
+                Bitmap.createBitmap(source, (width - height) / 2, 0, height, height, null, true)
             }
         }
-        return Bitmap.createScaledBitmap(croppedBitmap, ConstValueUtil.CLASSIFICATION_IMAGE_PIXEL, ConstValueUtil.CLASSIFICATION_IMAGE_PIXEL,true)
+        return Bitmap.createScaledBitmap(
+            croppedBitmap,
+            ConstValueUtil.CLASSIFICATION_IMAGE_PIXEL,
+            ConstValueUtil.CLASSIFICATION_IMAGE_PIXEL,
+            true
+        )
     }
 }

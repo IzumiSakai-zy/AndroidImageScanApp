@@ -14,12 +14,13 @@ class SearchFragment : Fragment() {
 
     companion object {
         const val TAG = "search_fragment"
+
         @JvmStatic
         fun newInstance() = SearchFragment()
     }
 
-    private var recyclerView:RecyclerView? = null
-    private lateinit var imageResourceIndexList:List<Int>
+    private var recyclerView: RecyclerView? = null
+    private lateinit var imageResourceIndexList: List<Int>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

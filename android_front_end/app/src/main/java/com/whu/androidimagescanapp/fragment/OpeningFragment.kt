@@ -10,14 +10,15 @@ import android.widget.Toast
 import com.whu.androidimagescanapp.R
 
 
-class OpeningFragment: Fragment(), View.OnClickListener {
+class OpeningFragment : Fragment(), View.OnClickListener {
 
-    private var openingBackground:ImageView? = null
-    private var loginButton:ImageView? = null
-    private var registerButton:ImageView? = null
+    private var openingBackground: ImageView? = null
+    private var loginButton: ImageView? = null
+    private var registerButton: ImageView? = null
 
     companion object {
         const val TAG = "OPENING_FRAGMENT"
+
         @JvmStatic
         fun newInstance() = OpeningFragment()
     }
@@ -43,14 +44,22 @@ class OpeningFragment: Fragment(), View.OnClickListener {
 
     override fun onClick(view: View?) {
         view ?: return
-        when(view.id) {
+        when (view.id) {
             R.id.opening_background -> {
-                Toast.makeText(view.context,view.context.getString(R.string.have_not_implement),Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    view.context,
+                    view.context.getString(R.string.have_not_implement),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
             R.id.opening_register_button, R.id.opening_login_button -> {
                 activity?.supportFragmentManager
                     ?.beginTransaction()
-                    ?.replace(R.id.main_activity_container, LoginFragment.newInstance(), LoginFragment.TAG)
+                    ?.replace(
+                        R.id.main_activity_container,
+                        LoginFragment.newInstance(),
+                        LoginFragment.TAG
+                    )
                     ?.addToBackStack(LoginFragment.TAG)
                     ?.commit()
             }

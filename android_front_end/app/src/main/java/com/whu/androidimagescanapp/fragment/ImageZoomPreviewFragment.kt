@@ -26,7 +26,7 @@ class ImageZoomPreviewFragment : Fragment() {
         }
     }
 
-    private var previewImage:ImageView? = null
+    private var previewImage: ImageView? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

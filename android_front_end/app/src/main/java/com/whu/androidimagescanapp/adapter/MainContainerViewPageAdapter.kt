@@ -20,18 +20,18 @@ class MainContainerViewPageAdapter(activity: FragmentActivity) : FragmentStateAd
         const val MY_SELF_PAGE_INDEX = 3
     }
 
-    private val homePageFragment:HomePageFragment by lazy { HomePageFragment.newInstance() }
-    private val searchFragment:SearchFragment by lazy { SearchFragment.newInstance() }
-    private val historyFragment:HistoryFragment by lazy { HistoryFragment.newInstance() }
-    private val mySelfFragment:MySelfFragment by lazy { MySelfFragment.newInstance() }
+    private val homePageFragment: HomePageFragment by lazy { HomePageFragment.newInstance() }
+    private val searchFragment: SearchFragment by lazy { SearchFragment.newInstance() }
+    private val historyFragment: HistoryFragment by lazy { HistoryFragment.newInstance() }
+    private val mySelfFragment: MySelfFragment by lazy { MySelfFragment.newInstance() }
 
     //暴露Homepage的ScannedImage给拍摄后显示图片使用
-    fun getHomePageFragmentScannedView():ImageView? {
+    fun getHomePageFragmentScannedView(): ImageView? {
         return homePageFragment.view?.findViewById(R.id.home_page_scanned_image)
     }
 
     override fun createFragment(position: Int): Fragment =
-        when(position) {
+        when (position) {
             HOME_PAGE_INDEX -> homePageFragment
             SEARCH_PAGE_INDEX -> searchFragment
             HISTORY_PAGE_INDEX -> historyFragment
