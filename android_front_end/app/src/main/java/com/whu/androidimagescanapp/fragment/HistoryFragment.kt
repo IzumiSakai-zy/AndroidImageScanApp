@@ -14,7 +14,7 @@ import com.whu.androidimagescanapp.item.HistoryItem
 class HistoryFragment : Fragment() {
 
     companion object {
-        const val TAT = "history_fragment"
+        const val TAG = "history_fragment"
 
         @JvmStatic
         fun newInstance() = HistoryFragment()
