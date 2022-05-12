@@ -24,7 +24,7 @@ class HomePageFragment : Fragment(), View.OnClickListener {
         fun newInstance() = HomePageFragment()
     }
 
-    var scannedImage: ImageView? = null
+    private var scannedImage: ImageView? = null
     private var nameEmailIcon: ImageView? = null
     private var predictedResult: TextView? = null
 

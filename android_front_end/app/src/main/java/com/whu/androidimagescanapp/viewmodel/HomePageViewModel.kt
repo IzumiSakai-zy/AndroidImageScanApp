@@ -1,7 +1,6 @@
 package com.whu.androidimagescanapp.viewmodel
 
 import android.annotation.SuppressLint
-import android.graphics.Bitmap
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
